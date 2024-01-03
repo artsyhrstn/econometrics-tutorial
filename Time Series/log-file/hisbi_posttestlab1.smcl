@@ -1,0 +1,410 @@
+{smcl}
+{com}{sf}{ul off}{txt}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}C:\Stata_Hisbi\0 Time Series\log-file\hisbi_posttestlab1.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res} 3 Jan 2024, 16:54:57
+{txt}
+{com}. 
+{txt}end of do-file
+
+{com}. do "C:\Users\ThinkPad\AppData\Local\Temp\STD1950_000000.tmp"
+{txt}
+{com}. use "C:\Stata_Hisbi\data\time-series\us_employ.dta"
+{txt}
+{com}. 
+{txt}end of do-file
+
+{com}. do "C:\Users\ThinkPad\AppData\Local\Temp\STD1950_000000.tmp"
+{txt}
+{com}. desc
+
+{txt}Contains data from {res}C:\Stata_Hisbi\data\time-series\us_employ.dta
+{txt} Observations:{res}            38                  
+{txt}    Variables:{res}             5                  8 Sep 2021 09:48
+{txt}{hline}
+Variable      Storage   Display    Value
+    name         type    format    label      Variable label
+{hline}
+{p 0 48}{res}{bind:year           }{txt}{bind: float   }{bind:{txt}%ty       }{space 1}{bind:         }{bind:  }{res}{res}{p_end}
+{p 0 48}{bind:usepop         }{txt}{bind: float   }{bind:{txt}%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}US employ/popul ratio{p_end}
+{p 0 48}{bind:usgnp          }{txt}{bind: float   }{bind:{txt}%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}US GNP{p_end}
+{p 0 48}{bind:usunemp        }{txt}{bind: float   }{bind:{txt}%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}US unemployment rate{p_end}
+{p 0 48}{bind:mincov         }{txt}{bind: float   }{bind:{txt}%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}(avgmin/avgwage)*avgcov{p_end}
+{txt}{hline}
+Sorted by: {res}year
+{txt}
+{com}. 
+{txt}end of do-file
+
+{com}. do "C:\Users\ThinkPad\AppData\Local\Temp\STD1950_000000.tmp"
+{txt}
+{com}. tsset year, yearly
+{res}
+{p 0 15 2}{txt:Time variable: }{res:year}{txt:, }{res:{bind:1950}}{txt: to }{res:{bind:1987}}{p_end}
+{txt}{col 9}Delta: {res}1 year
+{txt}
+{com}. 
+{txt}end of do-file
+
+{com}. do "C:\Users\ThinkPad\AppData\Local\Temp\STD1950_000000.tmp"
+{txt}
+{com}. tsline lusepop lusgnp lusunemp lmincov  
+{err}variable {bf}lusepop{sf} not found
+{txt}{search r(111), local:r(111);}
+
+end of do-file
+
+{search r(111), local:r(111);}
+
+{com}. do "C:\Users\ThinkPad\AppData\Local\Temp\STD1950_000000.tmp"
+{txt}
+{com}. gen lusepop=ln(usepop)
+{txt}
+{com}. gen lusgnp=ln(usgnp)
+{txt}
+{com}. gen lusunemp=ln(usunemp)
+{txt}
+{com}. gen lmincov=ln(mincov)
+{txt}
+{com}. 
+{txt}end of do-file
+
+{com}. do "C:\Users\ThinkPad\AppData\Local\Temp\STD1950_000000.tmp"
+{txt}
+{com}. tsline lusepop lusgnp lusunemp lmincov  
+{res}{txt}
+{com}. 
+{txt}end of do-file
+
+{com}. do "C:\Users\ThinkPad\AppData\Local\Temp\STD1950_000000.tmp"
+{txt}
+{com}. tsline d.lusepop d.lusgnp d.lusunemp d.lmincov
+{res}{txt}
+{com}. 
+{txt}end of do-file
+
+{com}. do "C:\Users\ThinkPad\AppData\Local\Temp\STD1950_000000.tmp"
+{txt}
+{com}. dfuller d.lusepop
+
+{txt}Dickey–Fuller test for unit root{col 44}Number of obs  = {res}{ralign 2:36}
+{txt}Variable: {res}D.lusepop{txt}{col 44}Number of lags = {res}{ralign 2:0}
+
+{txt}H0: Random walk without drift, d = 0
+
+{col 40}Dickey–Fuller
+{col 20}Test{col 30}{hline 8} critical value {hline 9}
+              statistic           1%           5%          10%
+{hline 62}
+ Z(t)       {res}     -4.476       -3.675       -2.969       -2.617
+{txt}{hline 62}
+MacKinnon approximate {it:p}-value for Z(t) = {res}0.0002{txt}.
+
+{com}. 
+{txt}end of do-file
+
+{com}. do "C:\Users\ThinkPad\AppData\Local\Temp\STD1950_000000.tmp"
+{txt}
+{com}. dfuller d.lusgnp 
+
+{txt}Dickey–Fuller test for unit root{col 44}Number of obs  = {res}{ralign 2:36}
+{txt}Variable: {res}D.lusgnp{txt}{col 44}Number of lags = {res}{ralign 2:0}
+
+{txt}H0: Random walk without drift, d = 0
+
+{col 40}Dickey–Fuller
+{col 20}Test{col 30}{hline 8} critical value {hline 9}
+              statistic           1%           5%          10%
+{hline 62}
+ Z(t)       {res}     -2.949       -3.675       -2.969       -2.617
+{txt}{hline 62}
+MacKinnon approximate {it:p}-value for Z(t) = {res}0.0399{txt}.
+
+{com}. 
+{txt}end of do-file
+
+{com}. do "C:\Users\ThinkPad\AppData\Local\Temp\STD1950_000000.tmp"
+{txt}
+{com}. dfuller d.lusunemp
+
+{txt}Dickey–Fuller test for unit root{col 44}Number of obs  = {res}{ralign 2:36}
+{txt}Variable: {res}D.lusunemp{txt}{col 44}Number of lags = {res}{ralign 2:0}
+
+{txt}H0: Random walk without drift, d = 0
+
+{col 40}Dickey–Fuller
+{col 20}Test{col 30}{hline 8} critical value {hline 9}
+              statistic           1%           5%          10%
+{hline 62}
+ Z(t)       {res}     -4.552       -3.675       -2.969       -2.617
+{txt}{hline 62}
+MacKinnon approximate {it:p}-value for Z(t) = {res}0.0002{txt}.
+
+{com}. 
+{txt}end of do-file
+
+{com}. do "C:\Users\ThinkPad\AppData\Local\Temp\STD1950_000000.tmp"
+{txt}
+{com}. dfuller d.lmincov
+
+{txt}Dickey–Fuller test for unit root{col 44}Number of obs  = {res}{ralign 2:36}
+{txt}Variable: {res}D.lmincov{txt}{col 44}Number of lags = {res}{ralign 2:0}
+
+{txt}H0: Random walk without drift, d = 0
+
+{col 40}Dickey–Fuller
+{col 20}Test{col 30}{hline 8} critical value {hline 9}
+              statistic           1%           5%          10%
+{hline 62}
+ Z(t)       {res}     -5.551       -3.675       -2.969       -2.617
+{txt}{hline 62}
+MacKinnon approximate {it:p}-value for Z(t) = {res}0.0000{txt}.
+
+{com}. 
+{txt}end of do-file
+
+{com}. do "C:\Users\ThinkPad\AppData\Local\Temp\STD1950_000000.tmp"
+{txt}
+{com}. dfuller d.lusepop
+
+{txt}Dickey–Fuller test for unit root{col 44}Number of obs  = {res}{ralign 2:36}
+{txt}Variable: {res}D.lusepop{txt}{col 44}Number of lags = {res}{ralign 2:0}
+
+{txt}H0: Random walk without drift, d = 0
+
+{col 40}Dickey–Fuller
+{col 20}Test{col 30}{hline 8} critical value {hline 9}
+              statistic           1%           5%          10%
+{hline 62}
+ Z(t)       {res}     -4.476       -3.675       -2.969       -2.617
+{txt}{hline 62}
+MacKinnon approximate {it:p}-value for Z(t) = {res}0.0002{txt}.
+
+{com}. dfuller d.lusgnp 
+
+{txt}Dickey–Fuller test for unit root{col 44}Number of obs  = {res}{ralign 2:36}
+{txt}Variable: {res}D.lusgnp{txt}{col 44}Number of lags = {res}{ralign 2:0}
+
+{txt}H0: Random walk without drift, d = 0
+
+{col 40}Dickey–Fuller
+{col 20}Test{col 30}{hline 8} critical value {hline 9}
+              statistic           1%           5%          10%
+{hline 62}
+ Z(t)       {res}     -2.949       -3.675       -2.969       -2.617
+{txt}{hline 62}
+MacKinnon approximate {it:p}-value for Z(t) = {res}0.0399{txt}.
+
+{com}. dfuller d.lusunemp
+
+{txt}Dickey–Fuller test for unit root{col 44}Number of obs  = {res}{ralign 2:36}
+{txt}Variable: {res}D.lusunemp{txt}{col 44}Number of lags = {res}{ralign 2:0}
+
+{txt}H0: Random walk without drift, d = 0
+
+{col 40}Dickey–Fuller
+{col 20}Test{col 30}{hline 8} critical value {hline 9}
+              statistic           1%           5%          10%
+{hline 62}
+ Z(t)       {res}     -4.552       -3.675       -2.969       -2.617
+{txt}{hline 62}
+MacKinnon approximate {it:p}-value for Z(t) = {res}0.0002{txt}.
+
+{com}. dfuller d.lmincov
+
+{txt}Dickey–Fuller test for unit root{col 44}Number of obs  = {res}{ralign 2:36}
+{txt}Variable: {res}D.lmincov{txt}{col 44}Number of lags = {res}{ralign 2:0}
+
+{txt}H0: Random walk without drift, d = 0
+
+{col 40}Dickey–Fuller
+{col 20}Test{col 30}{hline 8} critical value {hline 9}
+              statistic           1%           5%          10%
+{hline 62}
+ Z(t)       {res}     -5.551       -3.675       -2.969       -2.617
+{txt}{hline 62}
+MacKinnon approximate {it:p}-value for Z(t) = {res}0.0000{txt}.
+
+{com}. 
+{txt}end of do-file
+
+{com}. do "C:\Users\ThinkPad\AppData\Local\Temp\STD1950_000000.tmp"
+{txt}
+{com}. dfuller lusepop
+
+{txt}Dickey–Fuller test for unit root{col 44}Number of obs  = {res}{ralign 2:37}
+{txt}Variable: {res}lusepop{txt}{col 44}Number of lags = {res}{ralign 2:0}
+
+{txt}H0: Random walk without drift, d = 0
+
+{col 40}Dickey–Fuller
+{col 20}Test{col 30}{hline 8} critical value {hline 9}
+              statistic           1%           5%          10%
+{hline 62}
+ Z(t)       {res}     -2.051       -3.668       -2.966       -2.616
+{txt}{hline 62}
+MacKinnon approximate {it:p}-value for Z(t) = {res}0.2646{txt}.
+
+{com}. dfuller lusgnp 
+
+{txt}Dickey–Fuller test for unit root{col 44}Number of obs  = {res}{ralign 2:37}
+{txt}Variable: {res}lusgnp{txt}{col 44}Number of lags = {res}{ralign 2:0}
+
+{txt}H0: Random walk without drift, d = 0
+
+{col 40}Dickey–Fuller
+{col 20}Test{col 30}{hline 8} critical value {hline 9}
+              statistic           1%           5%          10%
+{hline 62}
+ Z(t)       {res}     -2.888       -3.668       -2.966       -2.616
+{txt}{hline 62}
+MacKinnon approximate {it:p}-value for Z(t) = {res}0.0468{txt}.
+
+{com}. dfuller lusunemp
+
+{txt}Dickey–Fuller test for unit root{col 44}Number of obs  = {res}{ralign 2:37}
+{txt}Variable: {res}lusunemp{txt}{col 44}Number of lags = {res}{ralign 2:0}
+
+{txt}H0: Random walk without drift, d = 0
+
+{col 40}Dickey–Fuller
+{col 20}Test{col 30}{hline 8} critical value {hline 9}
+              statistic           1%           5%          10%
+{hline 62}
+ Z(t)       {res}     -1.174       -3.668       -2.966       -2.616
+{txt}{hline 62}
+MacKinnon approximate {it:p}-value for Z(t) = {res}0.6847{txt}.
+
+{com}. dfuller lmincov
+
+{txt}Dickey–Fuller test for unit root{col 44}Number of obs  = {res}{ralign 2:37}
+{txt}Variable: {res}lmincov{txt}{col 44}Number of lags = {res}{ralign 2:0}
+
+{txt}H0: Random walk without drift, d = 0
+
+{col 40}Dickey–Fuller
+{col 20}Test{col 30}{hline 8} critical value {hline 9}
+              statistic           1%           5%          10%
+{hline 62}
+ Z(t)       {res}     -2.147       -3.668       -2.966       -2.616
+{txt}{hline 62}
+MacKinnon approximate {it:p}-value for Z(t) = {res}0.2259{txt}.
+
+{com}. 
+{txt}end of do-file
+
+{com}. do "C:\Users\ThinkPad\AppData\Local\Temp\STD1950_000000.tmp"
+{txt}
+{com}. reg lusepop lusgnp lusunemp lmincov year
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}        38
+{txt}{hline 13}{c +}{hline 34}   F(4, 33)        = {res}    64.70
+{txt}       Model {c |} {res}  .28368659         4  .070921648   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} .036171927        33  .001096119   {txt}R-squared       ={res}    0.8869
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.8732
+{txt}       Total {c |} {res} .319858518        37  .008644825   {txt}Root MSE        =   {res} .03311
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}     lusepop{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 6}lusgnp {c |}{col 14}{res}{space 2} .3182077{col 26}{space 2} .0733064{col 37}{space 1}    4.34{col 46}{space 3}0.000{col 54}{space 4} .1690647{col 67}{space 3} .4673507
+{txt}{space 4}lusunemp {c |}{col 14}{res}{space 2}-.0724349{col 26}{space 2} .0361396{col 37}{space 1}   -2.00{col 46}{space 3}0.053{col 54}{space 4}-.1459616{col 67}{space 3} .0010917
+{txt}{space 5}lmincov {c |}{col 14}{res}{space 2}-.1949742{col 26}{space 2} .0412894{col 37}{space 1}   -4.72{col 46}{space 3}0.000{col 54}{space 4}-.2789782{col 67}{space 3}-.1109703
+{txt}{space 8}year {c |}{col 14}{res}{space 2}-.0132615{col 26}{space 2} .0033591{col 37}{space 1}   -3.95{col 46}{space 3}0.000{col 54}{space 4}-.0200956{col 67}{space 3}-.0064274
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2}  22.6349{col 26}{space 2} 6.054331{col 37}{space 1}    3.74{col 46}{space 3}0.001{col 54}{space 4} 10.31727{col 67}{space 3} 34.95253
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}
+{com}. 
+{txt}end of do-file
+
+{com}. do "C:\Users\ThinkPad\AppData\Local\Temp\STD1950_000000.tmp"
+{txt}
+{com}. estat dwatson
+
+{txt}Durbin–Watson d-statistic({res}  5{txt},{res}    38{txt}) = {res} .7691063
+{txt}
+{com}. 
+{txt}end of do-file
+
+{com}. do "C:\Users\ThinkPad\AppData\Local\Temp\STD1950_000000.tmp"
+{txt}
+{com}. DW Test
+{err}command {bf}DW{sf} is unrecognized
+{txt}{search r(199), local:r(199);}
+
+end of do-file
+
+{search r(199), local:r(199);}
+
+{com}. do "C:\Users\ThinkPad\AppData\Local\Temp\STD1950_000000.tmp"
+{txt}
+{com}. estat dwatson
+
+{txt}Durbin–Watson d-statistic({res}  5{txt},{res}    38{txt}) = {res} .7691063
+{txt}
+{com}. 
+{txt}end of do-file
+
+{com}. estat bgodfrey
+
+{txt}Breusch–Godfrey LM test for autocorrelation
+{hline 13}{c TT}{hline 61}
+{col 5}lags({it:p}){col 14}{c |}{col 25}chi2{col 44}df{col 63}Prob > chi2
+{hline 13}{c +}{hline 61}
+{col 6}  1{col 14}{c |}{res}{col 20}    11.936{col 43}  1{col 63}  0.0006
+{txt}{hline 13}{c BT}{hline 61}
+{col 25}H0: no serial correlation
+
+{com}. do "C:\Users\ThinkPad\AppData\Local\Temp\STD1950_000000.tmp"
+{txt}
+{com}. reg d.lusepop d.lusgnp d.lusunemp d.lmincov year
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}        37
+{txt}{hline 13}{c +}{hline 34}   F(4, 32)        = {res}    15.23
+{txt}       Model {c |} {res} .025668252         4  .006417063   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} .013485317        32  .000421416   {txt}R-squared       ={res}    0.6556
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.6125
+{txt}       Total {c |} {res}  .03915357        36  .001087599   {txt}Root MSE        =   {res} .02053
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}   D.lusepop{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 6}lusgnp {c |}
+{space 9}D1. {c |}{col 14}{res}{space 2} .2804442{col 26}{space 2} .1444194{col 37}{space 1}    1.94{col 46}{space 3}0.061{col 54}{space 4}-.0137284{col 67}{space 3} .5746168
+{txt}{space 12} {c |}
+{space 4}lusunemp {c |}
+{space 9}D1. {c |}{col 14}{res}{space 2}-.2033878{col 26}{space 2} .0407886{col 37}{space 1}   -4.99{col 46}{space 3}0.000{col 54}{space 4}-.2864713{col 67}{space 3}-.1203042
+{txt}{space 12} {c |}
+{space 5}lmincov {c |}
+{space 9}D1. {c |}{col 14}{res}{space 2}-.0314628{col 26}{space 2} .0336017{col 37}{space 1}   -0.94{col 46}{space 3}0.356{col 54}{space 4}-.0999072{col 67}{space 3} .0369816
+{txt}{space 12} {c |}
+{space 8}year {c |}{col 14}{res}{space 2} .0010717{col 26}{space 2} .0003755{col 37}{space 1}    2.85{col 46}{space 3}0.008{col 54}{space 4} .0003068{col 67}{space 3} .0018367
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2}-2.127528{col 26}{space 2} .7428242{col 37}{space 1}   -2.86{col 46}{space 3}0.007{col 54}{space 4}-3.640611{col 67}{space 3}-.6144443
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}
+{com}. 
+{txt}end of do-file
+
+{com}. estat dwatson
+
+{txt}Durbin–Watson d-statistic({res}  5{txt},{res}    37{txt}) = {res} 2.024662
+
+{com}. estat bgodfrey
+
+{txt}Breusch–Godfrey LM test for autocorrelation
+{hline 13}{c TT}{hline 61}
+{col 5}lags({it:p}){col 14}{c |}{col 25}chi2{col 44}df{col 63}Prob > chi2
+{hline 13}{c +}{hline 61}
+{col 6}  1{col 14}{c |}{res}{col 20}     0.022{col 43}  1{col 63}  0.8830
+{txt}{hline 13}{c BT}{hline 61}
+{col 25}H0: no serial correlation
+
+{com}. log close
+      {txt}name:  {res}<unnamed>
+       {txt}log:  {res}C:\Stata_Hisbi\0 Time Series\log-file\hisbi_posttestlab1.smcl
+  {txt}log type:  {res}smcl
+ {txt}closed on:  {res} 3 Jan 2024, 18:03:35
+{txt}{.-}
+{smcl}
+{txt}{sf}{ul off}
