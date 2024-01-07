@@ -1,0 +1,709 @@
+{smcl}
+{com}{sf}{ul off}{txt}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}C:\Stata_Hisbi\econometrics-tutorial\Time Series\log-file\hisbi_posttestlab2.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res} 7 Jan 2024, 11:46:25
+{txt}
+{com}. 
+{txt}end of do-file
+
+{com}. do "C:\Users\ThinkPad\AppData\Local\Temp\STD3210_000000.tmp"
+{txt}
+{com}. gen year=tq(1990q1)+_n-1
+{txt}
+{com}. format year %tq
+{txt}
+{com}. tsset year, quarterly
+{res}
+{p 0 15 2}{txt:Time variable: }{res:year}{txt:, }{res:{bind:1990q1}}{txt: to }{res:{bind:2020q4}}{p_end}
+{txt}{col 9}Delta: {res}1 quarter
+{txt}
+{com}. br
+{txt}
+{com}. 
+{txt}end of do-file
+
+{com}. do "C:\Users\ThinkPad\AppData\Local\Temp\STD3210_000000.tmp"
+{txt}
+{com}. arima ihpb, arima (1,0,0)
+
+{txt}(setting optimization to BHHH)
+{res}{txt}Iteration 0:{col 16}log likelihood = {res}-363.95995{txt}  
+{res}{txt}Iteration 1:{col 16}log likelihood = {res}-242.39788{txt}  
+{res}{txt}Iteration 2:{col 16}log likelihood = {res}-218.99994{txt}  
+{res}{txt}Iteration 3:{col 16}log likelihood = {res}-217.98922{txt}  
+{res}{txt}Iteration 4:{col 16}log likelihood = {res}-217.71392{txt}  
+{res}{txt}(switching optimization to BFGS)
+{res}{txt}Iteration 5:{col 16}log likelihood = {res}-217.16649{txt}  
+{res}{txt}Iteration 6:{col 16}log likelihood = {res}-202.53423{txt}  
+{res}{txt}BFGS stepping has contracted, resetting BFGS Hessian (0)
+Iteration 7:{col 16}log likelihood = {res}-202.17813{txt}  
+{res}{txt}Iteration 8:{col 16}log likelihood = {res}-202.16845{txt}  (backed up)
+{res}{txt}Iteration 9:{col 16}log likelihood = {res}-202.10102{txt}  (backed up)
+{res}{txt}Iteration 10:{col 16}log likelihood = {res}-202.05896{txt}  
+{res}{txt}Iteration 11:{col 16}log likelihood = {res}-202.05636{txt}  
+{res}{txt}Iteration 12:{col 16}log likelihood = {res}-202.05618{txt}  
+{res}{txt}BFGS stepping has contracted, resetting BFGS Hessian (1)
+Iteration 13:{col 16}log likelihood = {res}-202.05083{txt}  
+{res}{txt}Iteration 14:{col 16}log likelihood = {res}-202.04772{txt}  (backed up)
+{res}{txt}(switching optimization to BHHH)
+{res}{txt}Iteration 15:{col 16}log likelihood = {res}-202.04521{txt}  (backed up)
+{res}{txt}Iteration 16:{col 16}log likelihood = {res}-201.94039{txt}  (backed up)
+{res}{txt}Iteration 17:{col 16}log likelihood = {res}-201.93625{txt}  
+{res}{txt}Iteration 18:{col 16}log likelihood = {res}-201.92953{txt}  (backed up)
+{res}{txt}Iteration 19:{col 16}log likelihood = {res}-201.92893{txt}  (backed up)
+{res}{txt}(switching optimization to BFGS)
+{res}{txt}Iteration 20:{col 16}log likelihood = {res}-201.92748{txt}  
+{res}{txt}Iteration 21:{col 16}log likelihood = {res}-201.92746{txt}  (backed up)
+{res}{txt}Iteration 22:{col 16}log likelihood = {res}-201.92739{txt}  
+{res}{txt}BFGS stepping has contracted, resetting BFGS Hessian (2)
+Iteration 23:{col 16}log likelihood = {res}-201.92739{txt}  
+{res}
+{txt}ARIMA regression
+
+Sample: {res}1990q1 {txt}thru{res} 2020q4 {col 49}{txt}Number of obs{col 67}={res}{col 69}       124
+                                                {txt}Wald chi2({res}1{txt})      =  {res} 45503.82
+{txt}Log likelihood = {res}-201.9274                      {txt}Prob > chi2       =     {res}0.0000
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 14}{c |}{col 26}      OPG
+{col 1}        ihpb{col 14}{c |} Coefficient{col 26}  std. err.{col 38}      z{col 46}   P>|z|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}ihpb         {txt}{c |}
+{space 7}_cons {c |}{col 14}{res}{space 2} 73.19032{col 26}{space 2} 41.87912{col 37}{space 1}    1.75{col 46}{space 3}0.081{col 54}{space 4}-8.891246{col 67}{space 3} 155.2719
+{txt}{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}ARMA         {txt}{c |}
+{space 10}ar {c |}
+{space 9}L1. {c |}{col 14}{res}{space 2} .9995987{col 26}{space 2}  .004686{col 37}{space 1}  213.32{col 46}{space 3}0.000{col 54}{space 4} .9904144{col 67}{space 3} 1.008783
+{txt}{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+      /sigma {c |}{col 14}{res}{space 2} 1.198136{col 26}{space 2} .0598645{col 37}{space 1}   20.01{col 46}{space 3}0.000{col 54}{space 4} 1.080803{col 67}{space 3} 1.315468
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{p 0 6 0 79}Note: The test of the variance against zero is one sided, and the two-sided confidence interval is truncated at zero.{p_end}
+
+{com}. 
+{txt}end of do-file
+
+{com}. do "C:\Users\ThinkPad\AppData\Local\Temp\STD3210_000000.tmp"
+{txt}
+{com}. predict ar1, r
+{txt}
+{com}. 
+{txt}end of do-file
+
+{com}. do "C:\Users\ThinkPad\AppData\Local\Temp\STD3210_000000.tmp"
+{txt}
+{com}. dfuller ar1
+
+{txt}Dickey–Fuller test for unit root{col 43}Number of obs  = {res}{ralign 3:123}
+{txt}Variable: {res}ar1{txt}{col 43}Number of lags = {res}{ralign 3:0}
+
+{txt}H0: Random walk without drift, d = 0
+
+{col 40}Dickey–Fuller
+{col 20}Test{col 30}{hline 8} critical value {hline 9}
+              statistic           1%           5%          10%
+{hline 62}
+ Z(t)       {res}    -43.496       -3.502       -2.888       -2.578
+{txt}{hline 62}
+MacKinnon approximate {it:p}-value for Z(t) = {res}0.0000{txt}.
+
+{com}. 
+{txt}end of do-file
+
+{com}. do "C:\Users\ThinkPad\AppData\Local\Temp\STD3210_000000.tmp"
+{txt}
+{com}. wntestq ar1
+
+{txt}Portmanteau test for white noise
+{hline 39}
+ Portmanteau (Q) statistic = {res}    2.5979
+{txt} Prob > chi2({res}40{txt})           = {res}    1.0000
+{txt}
+{com}. 
+{txt}end of do-file
+
+{com}. do "C:\Users\ThinkPad\AppData\Local\Temp\STD3210_000000.tmp"
+{txt}
+{com}. wntestq ar1
+
+{txt}Portmanteau test for white noise
+{hline 39}
+ Portmanteau (Q) statistic = {res}    2.5979
+{txt} Prob > chi2({res}40{txt})           = {res}    1.0000
+{txt}
+{com}. 
+{txt}end of do-file
+
+{com}. do "C:\Users\ThinkPad\AppData\Local\Temp\STD3210_000000.tmp"
+{txt}
+{com}. estat ic
+
+{txt}Akaike's information criterion and Bayesian information criterion
+
+{hline 13}{c TT}{hline 63}
+       Model {c |}          N   ll(null)  ll(model)      df        AIC        BIC
+{hline 13}{c +}{hline 63}
+{ralign 12:.}{col 14}{c |}{res}{col 16}       124{col 28}        .{col 39}-201.9274{col 50}     3{col 58} 409.8548{col 69} 418.3156
+{txt}{hline 13}{c BT}{hline 63}
+{p 0 6 0 77}Note: BIC uses N = number of observations. See {helpb bic_note:{bind:[R] BIC note}}.{p_end}
+
+{com}. 
+{txt}end of do-file
+
+{com}. do "C:\Users\ThinkPad\AppData\Local\Temp\STD3210_000000.tmp"
+{txt}
+{com}. arima ihpb, arima (0,0,1)
+
+{txt}(setting optimization to BHHH)
+{res}{txt}Iteration 0:{col 16}log likelihood = {res}-560.93462{txt}  
+{res}{txt}Iteration 1:{col 16}log likelihood = {res} -533.6111{txt}  
+{res}{txt}Iteration 2:{col 16}log likelihood = {res}-519.74421{txt}  
+{res}{txt}Iteration 3:{col 16}log likelihood = {res}-516.88368{txt}  
+{res}{txt}Iteration 4:{col 16}log likelihood = {res}-516.67466{txt}  
+{res}{txt}(switching optimization to BFGS)
+{res}{txt}Iteration 5:{col 16}log likelihood = {res}-516.55879{txt}  
+{res}{txt}Iteration 6:{col 16}log likelihood = {res}-516.52283{txt}  
+{res}{txt}Iteration 7:{col 16}log likelihood = {res}-516.52218{txt}  
+{res}{txt}Iteration 8:{col 16}log likelihood = {res}-516.52216{txt}  
+{res}
+{txt}ARIMA regression
+
+Sample: {res}1990q1 {txt}thru{res} 2020q4 {col 49}{txt}Number of obs{col 67}={res}{col 69}       124
+                                                {txt}Wald chi2({res}1{txt})      =  {res}     0.02
+{txt}Log likelihood = {res}-516.5222                      {txt}Prob > chi2       =     {res}0.8953
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 14}{c |}{col 26}      OPG
+{col 1}        ihpb{col 14}{c |} Coefficient{col 26}  std. err.{col 38}      z{col 46}   P>|z|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}ihpb         {txt}{c |}
+{space 7}_cons {c |}{col 14}{res}{space 2} 62.86382{col 26}{space 2} 3.033893{col 37}{space 1}   20.72{col 46}{space 3}0.000{col 54}{space 4}  56.9175{col 67}{space 3} 68.81014
+{txt}{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}ARMA         {txt}{c |}
+{space 10}ma {c |}
+{space 9}L1. {c |}{col 14}{res}{space 2} 1.000045{col 26}{space 2} 7.596015{col 37}{space 1}    0.13{col 46}{space 3}0.895{col 54}{space 4}-13.88787{col 67}{space 3} 15.88796
+{txt}{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+      /sigma {c |}{col 14}{res}{space 2} 15.28826{col 26}{space 2} 58.80353{col 37}{space 1}    0.26{col 46}{space 3}0.397{col 54}{space 4}        0{col 67}{space 3} 130.5411
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{p 0 6 0 79}Note: The test of the variance against zero is one sided, and the two-sided confidence interval is truncated at zero.{p_end}
+
+{com}. 
+{txt}end of do-file
+
+{com}. do "C:\Users\ThinkPad\AppData\Local\Temp\STD3210_000000.tmp"
+{txt}
+{com}. predict ma1, r
+{txt}
+{com}. dfuller ma1
+
+{txt}Dickey–Fuller test for unit root{col 43}Number of obs  = {res}{ralign 3:123}
+{txt}Variable: {res}ma1{txt}{col 43}Number of lags = {res}{ralign 3:0}
+
+{txt}H0: Random walk without drift, d = 0
+
+{col 40}Dickey–Fuller
+{col 20}Test{col 30}{hline 8} critical value {hline 9}
+              statistic           1%           5%          10%
+{hline 62}
+ Z(t)       {res}     -1.727       -3.502       -2.888       -2.578
+{txt}{hline 62}
+MacKinnon approximate {it:p}-value for Z(t) = {res}0.4175{txt}.
+
+{com}. 
+{txt}end of do-file
+
+{com}. do "C:\Users\ThinkPad\AppData\Local\Temp\STD3210_000000.tmp"
+{txt}
+{com}. wntestq ma1
+
+{txt}Portmanteau test for white noise
+{hline 39}
+ Portmanteau (Q) statistic = {res} 2047.0949
+{txt} Prob > chi2({res}40{txt})           = {res}    0.0000
+{txt}
+{com}. 
+{txt}end of do-file
+
+{com}. do "C:\Users\ThinkPad\AppData\Local\Temp\STD3210_000000.tmp"
+{txt}
+{com}. estat ic
+
+{txt}Akaike's information criterion and Bayesian information criterion
+
+{hline 13}{c TT}{hline 63}
+       Model {c |}          N   ll(null)  ll(model)      df        AIC        BIC
+{hline 13}{c +}{hline 63}
+{ralign 12:.}{col 14}{c |}{res}{col 16}       124{col 28}        .{col 39}-516.5222{col 50}     3{col 58} 1039.044{col 69} 1047.505
+{txt}{hline 13}{c BT}{hline 63}
+{p 0 6 0 77}Note: BIC uses N = number of observations. See {helpb bic_note:{bind:[R] BIC note}}.{p_end}
+
+{com}. 
+{txt}end of do-file
+
+{com}. do "C:\Users\ThinkPad\AppData\Local\Temp\STD3210_000000.tmp"
+{txt}
+{com}. arima ihpb, arima(1,0,1)
+
+{txt}(setting optimization to BHHH)
+{res}{txt}Iteration 0:{col 16}log likelihood = {res}-240.49514{txt}  
+{res}{txt}Iteration 1:{col 16}log likelihood = {res}-201.43087{txt}  
+{res}{txt}Iteration 2:{col 16}log likelihood = {res}-178.67486{txt}  
+{res}{txt}Iteration 3:{col 16}log likelihood = {res}-174.75893{txt}  
+{res}{txt}Iteration 4:{col 16}log likelihood = {res}-173.01915{txt}  
+{res}{txt}(switching optimization to BFGS)
+{res}{txt}Iteration 5:{col 16}log likelihood = {res}-172.93383{txt}  
+{res}{txt}Iteration 6:{col 16}log likelihood = {res}-172.86514{txt}  
+{res}{txt}Iteration 7:{col 16}log likelihood = {res}-172.63736{txt}  
+{res}{txt}Iteration 8:{col 16}log likelihood = {res}-172.61378{txt}  
+{res}{txt}BFGS stepping has contracted, resetting BFGS Hessian (0)
+Iteration 9:{col 16}log likelihood = {res}-172.61127{txt}  
+{res}{txt}Iteration 10:{col 16}log likelihood = {res}-172.61115{txt}  (backed up)
+{res}{txt}Iteration 11:{col 16}log likelihood = {res}-172.61092{txt}  (backed up)
+{res}{txt}Iteration 12:{col 16}log likelihood = {res}-172.61092{txt}  (backed up)
+{res}{txt}Iteration 13:{col 16}log likelihood = {res}-172.61089{txt}  
+{res}{txt}Iteration 14:{col 16}log likelihood = {res}-172.61088{txt}  
+{res}{txt}(switching optimization to BHHH)
+{res}{txt}Iteration 15:{col 16}log likelihood = {res}-172.61087{txt}  
+{res}{txt}Iteration 16:{col 16}log likelihood = {res}-172.61084{txt}  
+{res}{txt}Iteration 17:{col 16}log likelihood = {res}-172.61074{txt}  
+{res}{txt}Iteration 18:{col 16}log likelihood = {res} -172.6107{txt}  
+{res}{txt}Iteration 19:{col 16}log likelihood = {res}-172.61068{txt}  
+{res}{txt}(switching optimization to BFGS)
+{res}{txt}Iteration 20:{col 16}log likelihood = {res}-172.61066{txt}  
+{res}{txt}Iteration 21:{col 16}log likelihood = {res}-172.61049{txt}  
+{res}{txt}Iteration 22:{col 16}log likelihood = {res}-172.61047{txt}  
+{res}{txt}Iteration 23:{col 16}log likelihood = {res}-172.61047{txt}  
+{res}{txt}Iteration 24:{col 16}log likelihood = {res}-172.61047{txt}  
+{res}{txt}BFGS stepping has contracted, resetting BFGS Hessian (1)
+Iteration 25:{col 16}log likelihood = {res}-172.61047{txt}  
+{res}
+{txt}ARIMA regression
+
+Sample: {res}1990q1 {txt}thru{res} 2020q4 {col 49}{txt}Number of obs{col 67}={res}{col 69}       124
+                                                {txt}Wald chi2({res}2{txt})      =  {res} 35897.35
+{txt}Log likelihood = {res}-172.6105                      {txt}Prob > chi2       =     {res}0.0000
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 14}{c |}{col 26}      OPG
+{col 1}        ihpb{col 14}{c |} Coefficient{col 26}  std. err.{col 38}      z{col 46}   P>|z|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}ihpb         {txt}{c |}
+{space 7}_cons {c |}{col 14}{res}{space 2} 73.58499{col 26}{space 2} 42.08555{col 37}{space 1}    1.75{col 46}{space 3}0.080{col 54}{space 4}-8.901161{col 67}{space 3} 156.0711
+{txt}{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}ARMA         {txt}{c |}
+{space 10}ar {c |}
+{space 9}L1. {c |}{col 14}{res}{space 2} .9994038{col 26}{space 2} .0058071{col 37}{space 1}  172.10{col 46}{space 3}0.000{col 54}{space 4} .9880221{col 67}{space 3} 1.010786
+{txt}{space 12} {c |}
+{space 10}ma {c |}
+{space 9}L1. {c |}{col 14}{res}{space 2} .5627722{col 26}{space 2} .0717096{col 37}{space 1}    7.85{col 46}{space 3}0.000{col 54}{space 4}  .422224{col 67}{space 3} .7033204
+{txt}{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+      /sigma {c |}{col 14}{res}{space 2} .9425195{col 26}{space 2} .0416931{col 37}{space 1}   22.61{col 46}{space 3}0.000{col 54}{space 4} .8608025{col 67}{space 3} 1.024236
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{p 0 6 0 79}Note: The test of the variance against zero is one sided, and the two-sided confidence interval is truncated at zero.{p_end}
+
+{com}. 
+{txt}end of do-file
+
+{com}. do "C:\Users\ThinkPad\AppData\Local\Temp\STD3210_000000.tmp"
+{txt}
+{com}. predict arma1, r
+{txt}
+{com}. 
+{txt}end of do-file
+
+{com}. do "C:\Users\ThinkPad\AppData\Local\Temp\STD3210_000000.tmp"
+{txt}
+{com}. dfuller arma1
+
+{txt}Dickey–Fuller test for unit root{col 43}Number of obs  = {res}{ralign 3:123}
+{txt}Variable: {res}arma1{txt}{col 43}Number of lags = {res}{ralign 3:0}
+
+{txt}H0: Random walk without drift, d = 0
+
+{col 40}Dickey–Fuller
+{col 20}Test{col 30}{hline 8} critical value {hline 9}
+              statistic           1%           5%          10%
+{hline 62}
+ Z(t)       {res}    -52.161       -3.502       -2.888       -2.578
+{txt}{hline 62}
+MacKinnon approximate {it:p}-value for Z(t) = {res}0.0000{txt}.
+
+{com}. 
+{txt}end of do-file
+
+{com}. do "C:\Users\ThinkPad\AppData\Local\Temp\STD3210_000000.tmp"
+{txt}
+{com}. wntestq arma1
+
+{txt}Portmanteau test for white noise
+{hline 39}
+ Portmanteau (Q) statistic = {res}    0.8028
+{txt} Prob > chi2({res}40{txt})           = {res}    1.0000
+{txt}
+{com}. 
+{txt}end of do-file
+
+{com}. do "C:\Users\ThinkPad\AppData\Local\Temp\STD3210_000000.tmp"
+{txt}
+{com}. estat ic
+
+{txt}Akaike's information criterion and Bayesian information criterion
+
+{hline 13}{c TT}{hline 63}
+       Model {c |}          N   ll(null)  ll(model)      df        AIC        BIC
+{hline 13}{c +}{hline 63}
+{ralign 12:.}{col 14}{c |}{res}{col 16}       124{col 28}        .{col 39}-172.6105{col 50}     4{col 58} 353.2209{col 69} 364.5021
+{txt}{hline 13}{c BT}{hline 63}
+{p 0 6 0 77}Note: BIC uses N = number of observations. See {helpb bic_note:{bind:[R] BIC note}}.{p_end}
+
+{com}. 
+{txt}end of do-file
+
+{com}. do "C:\Users\ThinkPad\AppData\Local\Temp\STD3210_000000.tmp"
+{txt}
+{com}. arima ihpb, arima (1,1,0)
+
+{txt}(setting optimization to BHHH)
+{res}{txt}Iteration 0:{col 16}log likelihood = {res} -138.9195{txt}  
+{res}{txt}Iteration 1:{col 16}log likelihood = {res}-138.91259{txt}  
+{res}{txt}Iteration 2:{col 16}log likelihood = {res}-138.90751{txt}  
+{res}{txt}Iteration 3:{col 16}log likelihood = {res}-138.90571{txt}  
+{res}{txt}Iteration 4:{col 16}log likelihood = {res}-138.90455{txt}  
+{res}{txt}(switching optimization to BFGS)
+{res}{txt}Iteration 5:{col 16}log likelihood = {res}-138.90406{txt}  
+{res}{txt}Iteration 6:{col 16}log likelihood = {res}-138.90349{txt}  
+{res}{txt}Iteration 7:{col 16}log likelihood = {res}-138.90349{txt}  
+{res}
+{txt}ARIMA regression
+
+Sample: {res}1990q2 {txt}thru{res} 2020q4 {col 49}{txt}Number of obs{col 67}={res}{col 69}       123
+                                                {txt}Wald chi2({res}1{txt})      =  {res}    93.52
+{txt}Log likelihood = {res}-138.9035                      {txt}Prob > chi2       =     {res}0.0000
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 14}{c |}{col 26}      OPG
+{col 1}      D.ihpb{col 14}{c |} Coefficient{col 26}  std. err.{col 38}      z{col 46}   P>|z|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}ihpb         {txt}{c |}
+{space 7}_cons {c |}{col 14}{res}{space 2} .7274331{col 26}{space 2} .2225838{col 37}{space 1}    3.27{col 46}{space 3}0.001{col 54}{space 4} .2911768{col 67}{space 3} 1.163689
+{txt}{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}ARMA         {txt}{c |}
+{space 10}ar {c |}
+{space 9}L1. {c |}{col 14}{res}{space 2} .6601412{col 26}{space 2} .0682644{col 37}{space 1}    9.67{col 46}{space 3}0.000{col 54}{space 4} .5263454{col 67}{space 3}  .793937
+{txt}{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+      /sigma {c |}{col 14}{res}{space 2} .7467932{col 26}{space 2} .0379306{col 37}{space 1}   19.69{col 46}{space 3}0.000{col 54}{space 4} .6724506{col 67}{space 3} .8211358
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{p 0 6 0 79}Note: The test of the variance against zero is one sided, and the two-sided confidence interval is truncated at zero.{p_end}
+
+{com}. arima d.ihpb, arima (1,0,0)
+
+{txt}(setting optimization to BHHH)
+{res}{txt}Iteration 0:{col 16}log likelihood = {res} -138.9195{txt}  
+{res}{txt}Iteration 1:{col 16}log likelihood = {res}-138.91259{txt}  
+{res}{txt}Iteration 2:{col 16}log likelihood = {res}-138.90751{txt}  
+{res}{txt}Iteration 3:{col 16}log likelihood = {res}-138.90571{txt}  
+{res}{txt}Iteration 4:{col 16}log likelihood = {res}-138.90455{txt}  
+{res}{txt}(switching optimization to BFGS)
+{res}{txt}Iteration 5:{col 16}log likelihood = {res}-138.90406{txt}  
+{res}{txt}Iteration 6:{col 16}log likelihood = {res}-138.90349{txt}  
+{res}{txt}Iteration 7:{col 16}log likelihood = {res}-138.90349{txt}  
+{res}
+{txt}ARIMA regression
+
+Sample: {res}1990q2 {txt}thru{res} 2020q4 {col 49}{txt}Number of obs{col 67}={res}{col 69}       123
+                                                {txt}Wald chi2({res}1{txt})      =  {res}    93.52
+{txt}Log likelihood = {res}-138.9035                      {txt}Prob > chi2       =     {res}0.0000
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 14}{c |}{col 26}      OPG
+{col 1}      D.ihpb{col 14}{c |} Coefficient{col 26}  std. err.{col 38}      z{col 46}   P>|z|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}ihpb         {txt}{c |}
+{space 7}_cons {c |}{col 14}{res}{space 2} .7274331{col 26}{space 2} .2225838{col 37}{space 1}    3.27{col 46}{space 3}0.001{col 54}{space 4} .2911768{col 67}{space 3} 1.163689
+{txt}{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}ARMA         {txt}{c |}
+{space 10}ar {c |}
+{space 9}L1. {c |}{col 14}{res}{space 2} .6601412{col 26}{space 2} .0682644{col 37}{space 1}    9.67{col 46}{space 3}0.000{col 54}{space 4} .5263454{col 67}{space 3}  .793937
+{txt}{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+      /sigma {c |}{col 14}{res}{space 2} .7467932{col 26}{space 2} .0379306{col 37}{space 1}   19.69{col 46}{space 3}0.000{col 54}{space 4} .6724506{col 67}{space 3} .8211358
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{p 0 6 0 79}Note: The test of the variance against zero is one sided, and the two-sided confidence interval is truncated at zero.{p_end}
+
+{com}. 
+{txt}end of do-file
+
+{com}. do "C:\Users\ThinkPad\AppData\Local\Temp\STD3210_000000.tmp"
+{txt}
+{com}. dfuller d.ar1
+
+{txt}Dickey–Fuller test for unit root{col 43}Number of obs  = {res}{ralign 3:122}
+{txt}Variable: {res}D.ar1{txt}{col 43}Number of lags = {res}{ralign 3:0}
+
+{txt}H0: Random walk without drift, d = 0
+
+{col 40}Dickey–Fuller
+{col 20}Test{col 30}{hline 8} critical value {hline 9}
+              statistic           1%           5%          10%
+{hline 62}
+ Z(t)       {res}    -54.011       -3.503       -2.889       -2.579
+{txt}{hline 62}
+MacKinnon approximate {it:p}-value for Z(t) = {res}0.0000{txt}.
+
+{com}. 
+{txt}end of do-file
+
+{com}. do "C:\Users\ThinkPad\AppData\Local\Temp\STD3210_000000.tmp"
+{txt}
+{com}. wntestq d.ar1
+
+{txt}Portmanteau test for white noise
+{hline 39}
+ Portmanteau (Q) statistic = {res}    0.2061
+{txt} Prob > chi2({res}40{txt})           = {res}    1.0000
+{txt}
+{com}. 
+{txt}end of do-file
+
+{com}. do "C:\Users\ThinkPad\AppData\Local\Temp\STD3210_000000.tmp"
+{txt}
+{com}. estat ic
+
+{txt}Akaike's information criterion and Bayesian information criterion
+
+{hline 13}{c TT}{hline 63}
+       Model {c |}          N   ll(null)  ll(model)      df        AIC        BIC
+{hline 13}{c +}{hline 63}
+{ralign 12:.}{col 14}{c |}{res}{col 16}       123{col 28}        .{col 39}-138.9035{col 50}     3{col 58}  283.807{col 69} 292.2435
+{txt}{hline 13}{c BT}{hline 63}
+{p 0 6 0 77}Note: BIC uses N = number of observations. See {helpb bic_note:{bind:[R] BIC note}}.{p_end}
+
+{com}. 
+{txt}end of do-file
+
+{com}. do "C:\Users\ThinkPad\AppData\Local\Temp\STD3210_000000.tmp"
+{txt}
+{com}. arima ihpb, arima (0,1,1)
+
+{txt}(setting optimization to BHHH)
+{res}{txt}Iteration 0:{col 16}log likelihood = {res}-155.28234{txt}  
+{res}{txt}Iteration 1:{col 16}log likelihood = {res}-152.78934{txt}  
+{res}{txt}Iteration 2:{col 16}log likelihood = {res}-151.54034{txt}  
+{res}{txt}Iteration 3:{col 16}log likelihood = {res}-151.02602{txt}  
+{res}{txt}Iteration 4:{col 16}log likelihood = {res}-150.87116{txt}  
+{res}{txt}(switching optimization to BFGS)
+{res}{txt}Iteration 5:{col 16}log likelihood = {res}-150.83281{txt}  
+{res}{txt}Iteration 6:{col 16}log likelihood = {res}-150.78132{txt}  
+{res}{txt}Iteration 7:{col 16}log likelihood = {res}-150.77613{txt}  
+{res}{txt}Iteration 8:{col 16}log likelihood = {res} -150.7761{txt}  
+{res}{txt}Iteration 9:{col 16}log likelihood = {res} -150.7761{txt}  
+{res}
+{txt}ARIMA regression
+
+Sample: {res}1990q2 {txt}thru{res} 2020q4 {col 49}{txt}Number of obs{col 67}={res}{col 69}       123
+                                                {txt}Wald chi2({res}1{txt})      =  {res}    54.29
+{txt}Log likelihood = {res}-150.7761                      {txt}Prob > chi2       =     {res}0.0000
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 14}{c |}{col 26}      OPG
+{col 1}      D.ihpb{col 14}{c |} Coefficient{col 26}  std. err.{col 38}      z{col 46}   P>|z|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}ihpb         {txt}{c |}
+{space 7}_cons {c |}{col 14}{res}{space 2} .7007305{col 26}{space 2} .1331182{col 37}{space 1}    5.26{col 46}{space 3}0.000{col 54}{space 4} .4398236{col 67}{space 3} .9616374
+{txt}{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}ARMA         {txt}{c |}
+{space 10}ma {c |}
+{space 9}L1. {c |}{col 14}{res}{space 2} .4898469{col 26}{space 2} .0664813{col 37}{space 1}    7.37{col 46}{space 3}0.000{col 54}{space 4} .3595459{col 67}{space 3} .6201478
+{txt}{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+      /sigma {c |}{col 14}{res}{space 2} .8234671{col 26}{space 2} .0470193{col 37}{space 1}   17.51{col 46}{space 3}0.000{col 54}{space 4} .7313109{col 67}{space 3} .9156232
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{p 0 6 0 79}Note: The test of the variance against zero is one sided, and the two-sided confidence interval is truncated at zero.{p_end}
+
+{com}. arima d.ihpb, arima (0,0,1)
+
+{txt}(setting optimization to BHHH)
+{res}{txt}Iteration 0:{col 16}log likelihood = {res}-155.28234{txt}  
+{res}{txt}Iteration 1:{col 16}log likelihood = {res}-152.78934{txt}  
+{res}{txt}Iteration 2:{col 16}log likelihood = {res}-151.54034{txt}  
+{res}{txt}Iteration 3:{col 16}log likelihood = {res}-151.02602{txt}  
+{res}{txt}Iteration 4:{col 16}log likelihood = {res}-150.87116{txt}  
+{res}{txt}(switching optimization to BFGS)
+{res}{txt}Iteration 5:{col 16}log likelihood = {res}-150.83281{txt}  
+{res}{txt}Iteration 6:{col 16}log likelihood = {res}-150.78132{txt}  
+{res}{txt}Iteration 7:{col 16}log likelihood = {res}-150.77613{txt}  
+{res}{txt}Iteration 8:{col 16}log likelihood = {res} -150.7761{txt}  
+{res}{txt}Iteration 9:{col 16}log likelihood = {res} -150.7761{txt}  
+{res}
+{txt}ARIMA regression
+
+Sample: {res}1990q2 {txt}thru{res} 2020q4 {col 49}{txt}Number of obs{col 67}={res}{col 69}       123
+                                                {txt}Wald chi2({res}1{txt})      =  {res}    54.29
+{txt}Log likelihood = {res}-150.7761                      {txt}Prob > chi2       =     {res}0.0000
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 14}{c |}{col 26}      OPG
+{col 1}      D.ihpb{col 14}{c |} Coefficient{col 26}  std. err.{col 38}      z{col 46}   P>|z|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}ihpb         {txt}{c |}
+{space 7}_cons {c |}{col 14}{res}{space 2} .7007305{col 26}{space 2} .1331182{col 37}{space 1}    5.26{col 46}{space 3}0.000{col 54}{space 4} .4398236{col 67}{space 3} .9616374
+{txt}{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}ARMA         {txt}{c |}
+{space 10}ma {c |}
+{space 9}L1. {c |}{col 14}{res}{space 2} .4898469{col 26}{space 2} .0664813{col 37}{space 1}    7.37{col 46}{space 3}0.000{col 54}{space 4} .3595459{col 67}{space 3} .6201478
+{txt}{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+      /sigma {c |}{col 14}{res}{space 2} .8234671{col 26}{space 2} .0470193{col 37}{space 1}   17.51{col 46}{space 3}0.000{col 54}{space 4} .7313109{col 67}{space 3} .9156232
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{p 0 6 0 79}Note: The test of the variance against zero is one sided, and the two-sided confidence interval is truncated at zero.{p_end}
+
+{com}. 
+{txt}end of do-file
+
+{com}. do "C:\Users\ThinkPad\AppData\Local\Temp\STD3210_000000.tmp"
+{txt}
+{com}. dfuller d.ma1
+
+{txt}Dickey–Fuller test for unit root{col 43}Number of obs  = {res}{ralign 3:122}
+{txt}Variable: {res}D.ma1{txt}{col 43}Number of lags = {res}{ralign 3:0}
+
+{txt}H0: Random walk without drift, d = 0
+
+{col 40}Dickey–Fuller
+{col 20}Test{col 30}{hline 8} critical value {hline 9}
+              statistic           1%           5%          10%
+{hline 62}
+ Z(t)       {res}    -67.677       -3.503       -2.889       -2.579
+{txt}{hline 62}
+MacKinnon approximate {it:p}-value for Z(t) = {res}0.0000{txt}.
+
+{com}. 
+{txt}end of do-file
+
+{com}. do "C:\Users\ThinkPad\AppData\Local\Temp\STD3210_000000.tmp"
+{txt}
+{com}. wntestq d.ma1
+
+{txt}Portmanteau test for white noise
+{hline 39}
+ Portmanteau (Q) statistic = {res} 2235.1950
+{txt} Prob > chi2({res}40{txt})           = {res}    0.0000
+{txt}
+{com}. 
+{txt}end of do-file
+
+{com}. do "C:\Users\ThinkPad\AppData\Local\Temp\STD3210_000000.tmp"
+{txt}
+{com}. estat ic
+
+{txt}Akaike's information criterion and Bayesian information criterion
+
+{hline 13}{c TT}{hline 63}
+       Model {c |}          N   ll(null)  ll(model)      df        AIC        BIC
+{hline 13}{c +}{hline 63}
+{ralign 12:.}{col 14}{c |}{res}{col 16}       123{col 28}        .{col 39}-150.7761{col 50}     3{col 58} 307.5522{col 69} 315.9887
+{txt}{hline 13}{c BT}{hline 63}
+{p 0 6 0 77}Note: BIC uses N = number of observations. See {helpb bic_note:{bind:[R] BIC note}}.{p_end}
+
+{com}. 
+{txt}end of do-file
+
+{com}. do "C:\Users\ThinkPad\AppData\Local\Temp\STD3210_000000.tmp"
+{txt}
+{com}. arima ihpb, arima (1,1,1)
+
+{txt}(setting optimization to BHHH)
+{res}{txt}Iteration 0:{col 16}log likelihood = {res}-139.80133{txt}  
+{res}{txt}Iteration 1:{col 16}log likelihood = {res} -135.6278{txt}  
+{res}{txt}Iteration 2:{col 16}log likelihood = {res}-135.41838{txt}  
+{res}{txt}Iteration 3:{col 16}log likelihood = {res}-135.36691{txt}  
+{res}{txt}Iteration 4:{col 16}log likelihood = {res}-135.35892{txt}  
+{res}{txt}(switching optimization to BFGS)
+{res}{txt}Iteration 5:{col 16}log likelihood = {res}-135.35471{txt}  
+{res}{txt}Iteration 6:{col 16}log likelihood = {res}-135.35135{txt}  
+{res}{txt}Iteration 7:{col 16}log likelihood = {res}-135.35132{txt}  
+{res}{txt}Iteration 8:{col 16}log likelihood = {res}-135.35131{txt}  
+{res}
+{txt}ARIMA regression
+
+Sample: {res}1990q2 {txt}thru{res} 2020q4 {col 49}{txt}Number of obs{col 67}={res}{col 69}       123
+                                                {txt}Wald chi2({res}2{txt})      =  {res}   310.64
+{txt}Log likelihood = {res}-135.3513                      {txt}Prob > chi2       =     {res}0.0000
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 14}{c |}{col 26}      OPG
+{col 1}      D.ihpb{col 14}{c |} Coefficient{col 26}  std. err.{col 38}      z{col 46}   P>|z|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}ihpb         {txt}{c |}
+{space 7}_cons {c |}{col 14}{res}{space 2} .7498197{col 26}{space 2} .3340968{col 37}{space 1}    2.24{col 46}{space 3}0.025{col 54}{space 4} .0950019{col 67}{space 3} 1.404637
+{txt}{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}ARMA         {txt}{c |}
+{space 10}ar {c |}
+{space 9}L1. {c |}{col 14}{res}{space 2} .8742288{col 26}{space 2} .0545435{col 37}{space 1}   16.03{col 46}{space 3}0.000{col 54}{space 4} .7673256{col 67}{space 3}  .981132
+{txt}{space 12} {c |}
+{space 10}ma {c |}
+{space 9}L1. {c |}{col 14}{res}{space 2}-.4120458{col 26}{space 2} .1000284{col 37}{space 1}   -4.12{col 46}{space 3}0.000{col 54}{space 4}-.6080979{col 67}{space 3}-.2159938
+{txt}{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+      /sigma {c |}{col 14}{res}{space 2} .7250436{col 26}{space 2} .0368065{col 37}{space 1}   19.70{col 46}{space 3}0.000{col 54}{space 4} .6529042{col 67}{space 3} .7971829
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{p 0 6 0 79}Note: The test of the variance against zero is one sided, and the two-sided confidence interval is truncated at zero.{p_end}
+
+{com}. 
+{txt}end of do-file
+
+{com}. do "C:\Users\ThinkPad\AppData\Local\Temp\STD3210_000000.tmp"
+{txt}
+{com}. dfuller d.arma1
+
+{txt}Dickey–Fuller test for unit root{col 43}Number of obs  = {res}{ralign 3:122}
+{txt}Variable: {res}D.arma1{txt}{col 43}Number of lags = {res}{ralign 3:0}
+
+{txt}H0: Random walk without drift, d = 0
+
+{col 40}Dickey–Fuller
+{col 20}Test{col 30}{hline 8} critical value {hline 9}
+              statistic           1%           5%          10%
+{hline 62}
+ Z(t)       {res}    -42.695       -3.503       -2.889       -2.579
+{txt}{hline 62}
+MacKinnon approximate {it:p}-value for Z(t) = {res}0.0000{txt}.
+
+{com}. 
+{txt}end of do-file
+
+{com}. do "C:\Users\ThinkPad\AppData\Local\Temp\STD3210_000000.tmp"
+{txt}
+{com}. wntestq d.arma1
+
+{txt}Portmanteau test for white noise
+{hline 39}
+ Portmanteau (Q) statistic = {res}    1.3858
+{txt} Prob > chi2({res}40{txt})           = {res}    1.0000
+{txt}
+{com}. 
+{txt}end of do-file
+
+{com}. do "C:\Users\ThinkPad\AppData\Local\Temp\STD3210_000000.tmp"
+{txt}
+{com}. estat ic
+
+{txt}Akaike's information criterion and Bayesian information criterion
+
+{hline 13}{c TT}{hline 63}
+       Model {c |}          N   ll(null)  ll(model)      df        AIC        BIC
+{hline 13}{c +}{hline 63}
+{ralign 12:.}{col 14}{c |}{res}{col 16}       123{col 28}        .{col 39}-135.3513{col 50}     4{col 58} 278.7026{col 69} 289.9514
+{txt}{hline 13}{c BT}{hline 63}
+{p 0 6 0 77}Note: BIC uses N = number of observations. See {helpb bic_note:{bind:[R] BIC note}}.{p_end}
+
+{com}. 
+{txt}end of do-file
+
+{com}. do "C:\Users\ThinkPad\AppData\Local\Temp\STD3210_000000.tmp"
+{txt}
+{com}. log close
+      {txt}name:  {res}<unnamed>
+       {txt}log:  {res}C:\Stata_Hisbi\econometrics-tutorial\Time Series\log-file\hisbi_posttestlab2.smcl
+  {txt}log type:  {res}smcl
+ {txt}closed on:  {res} 7 Jan 2024, 11:49:58
+{txt}{.-}
+{smcl}
+{txt}{sf}{ul off}
